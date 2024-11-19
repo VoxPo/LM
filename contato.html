@@ -17,24 +17,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#sobre">Sobre Nós</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#proposito">Propósito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#missao">Missão, Visão & Valores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#atuacao">Áreas de Atuação</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#time">Time</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html#expertise">Expertise</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre Nós</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#proposito">Propósito</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#missao">Missão, Visão & Valores</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#atuacao">Áreas de Atuação</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#time">Time</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#expertise">Expertise</a></li>
                 </ul>
             </div>
         </div>
@@ -67,7 +55,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-light py-4" style="background-color: var(--primary-blue) !important;">
+    <footer class="bg-primary text-light py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -89,13 +77,37 @@
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Captura os dados do formulário
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var message = document.getElementById('message').value;
-            console.log('Form submitted:', { name, email, message });
-            // Aqui você pode adicionar o código para enviar os dados do formulário para um servidor
-            alert('Mensagem enviada com sucesso!');
-            window.location.href = 'index.html';
+
+            // Verifica se os campos estão preenchidos
+            if (!name || !email || !message) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            // Envia os dados para o Google Apps Script
+            fetch('https://script.google.com/macros/s/AKfycbxNtdXWU7Ce37o-AbnWS-aU2cZEs_tUUhEAg04lT-Vjv8CndXQDdPfsK724corFZoLWRw/exec', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('Mensagem enviada com sucesso!');
+                    document.getElementById('contactForm').reset();  // Limpa o formulário após o envio
+                } else {
+                    alert('Erro ao enviar mensagem: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Houve um problema ao enviar a mensagem. Tente novamente mais tarde.');
+            });
         });
     </script>
 </body>

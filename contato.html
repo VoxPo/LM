@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LMadvisory - Contato</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body class="bg-azul">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="index.html">LMadvisory</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#sobre">Sobre Nós</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#proposito">Propósito</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#missao">Missão, Visão & Valores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#atuacao">Áreas de Atuação</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#time">Time</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#expertise">Expertise</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Form -->
+    <section class="section-padding text-white">
+        <div class="container mt-5 pt-5">
+            <h1 class="text-center mb-4 text-white">Entre em Contato</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-6 bg-white text-dark p-4 rounded">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-light py-4" style="background-color: var(--primary-blue) !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>LMadvisory</h5>
+                    <p>"O sucesso é a soma de pequenos esforços repetidos dia após dia"</p>
+                    <p>Robert Collier</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Contato</h5>
+                    <p>Email: lmadvisory@gmail.com</p>
+                    <p>Telefone: (11) 95930-3580</p>
+                    <p>Endereço: São Paulo, SP</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+            console.log('Form submitted:', { name, email, message });
+            // Aqui você pode adicionar o código para enviar os dados do formulário para um servidor
+            alert('Mensagem enviada com sucesso!');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

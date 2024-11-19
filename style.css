@@ -3,6 +3,9 @@
     --secondary-blue: #0e0c6fe9;
     --light-blue: #424298;
 }
+.bg-azul{
+    background-color: #07063ee9;
+}
 body {
     font-family: 'Arial', sans-serif;
 }
@@ -27,7 +30,7 @@ body {
 }
 .carousel-caption {
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-30%);
     bottom: initial;
     background-color: transparent;
 }
@@ -43,6 +46,9 @@ body {
 .navbar {
     transition: all 0.4s;
     background-color: transparent !important;
+}
+.navbar .navbar-toggler{
+    background-color: #ffffff;
 }
 .navbar .navbar-brand{
     font-size: 2rem;
@@ -72,6 +78,9 @@ body {
 }
 .text-blue {
     color: var(--primary-blue);
+}
+.text-white{
+    color: #fff;
 }
 .carousel-control-prev-icon,
 .carousel-control-next-icon {

@@ -1,7 +1,7 @@
 :root {
-    --primary-blue: #00008B;
-    --secondary-blue: #0000CD;
-    --light-blue: #E6E6FA;
+    --primary-blue: #07063ee9;
+    --secondary-blue: #0e0c6fe9;
+    --light-blue: #424298;
 }
 body {
     font-family: 'Arial', sans-serif;
@@ -42,16 +42,22 @@ body {
 }
 .navbar {
     transition: all 0.4s;
+    background-color: transparent !important;
+}
+.navbar .navbar-brand{
+    font-size: 2rem;
 }
 .navbar-scrolled {
-    background: var(--primary-blue);
+    background-color: var(--primary-blue) !important;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .navbar-light .navbar-nav .nav-link {
     color: #fff;
+    margin: 0 15px;
 }
 .navbar-light .navbar-nav .nav-link:hover {
     color: var(--light-blue);
+    text-decoration: underline;
 }
 .btn-primary {
     background-color: var(--primary-blue);

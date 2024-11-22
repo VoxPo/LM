@@ -90,7 +90,7 @@
     }
 
     // Envia os dados para o Google Apps Script
-    fetch('https://script.google.com/macros/s/AKfycbwvgs_SieNai-PqvtBFpO4DwOQaDaJVYBtPX0ouLGgGr6kTB4ZAXtqZdh2tCrIjwu6SaQ/exec', { // Substitua com a URL do seu Apps Script
+    fetch('api.js', { // Substitua com a URL do seu Apps Script
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message })

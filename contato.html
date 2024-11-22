@@ -90,7 +90,7 @@
     }
 
     // Envia os dados para o Google Apps Script
-    fetch('api.js', { // Substitua com a URL do seu Apps Script
+    fetch('/api/proxy', { // Substitua com a URL do seu Apps Script
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message })

@@ -76,39 +76,39 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    e.preventDefault();
     
-            // Captura os dados do formulário
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
-            var message = document.getElementById('message').value;
-    
-            // Verifica se os campos estão preenchidos
-            if (!name || !email || !message) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-    
-            // Envia os dados para o proxy na Vercel
-            fetch('/api/proxy', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, email, message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    alert('Mensagem enviada com sucesso!');
-                    document.getElementById('contactForm').reset(); // Limpa o formulário após o envio
-                } else {
-                    alert('Erro ao enviar mensagem: ' + data.message);
-                }
-            })
-            .catch(error => {
-                console.error('Erro:', error);
-                alert('Houve um problema ao enviar a mensagem. Tente novamente mais tarde.');
-            });
-        });
+    // Captura os dados do formulário
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+    // Verifica se os campos estão preenchidos
+    if (!name || !email || !message) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    // Envia os dados para o Google Apps Script
+    fetch('https://script.google.com/macros/s/AKfycbwvgs_SieNai-PqvtBFpO4DwOQaDaJVYBtPX0ouLGgGr6kTB4ZAXtqZdh2tCrIjwu6SaQ/exec', { // Substitua com a URL do seu Apps Script
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, message })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Mensagem enviada com sucesso!');
+            document.getElementById('contactForm').reset();  // Limpa o formulário após o envio
+        } else {
+            alert('Erro ao enviar mensagem: ' + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Houve um problema ao enviar a mensagem. Tente novamente mais tarde.');
+    });
+});
     </script>
 </body>
 </html>

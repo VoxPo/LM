@@ -77,19 +77,19 @@
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            
+    
             // Captura os dados do formulário
             var name = document.getElementById('name').value;
             var email = document.getElementById('email').value;
             var message = document.getElementById('message').value;
-
+    
             // Verifica se os campos estão preenchidos
             if (!name || !email || !message) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
-
-            // Envia os dados para o Google Apps Script
+    
+            // Envia os dados para o proxy na Vercel
             fetch('/api/proxy', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -99,7 +99,7 @@
             .then(data => {
                 if (data.status === 'success') {
                     alert('Mensagem enviada com sucesso!');
-                    document.getElementById('contactForm').reset();  // Limpa o formulário após o envio
+                    document.getElementById('contactForm').reset(); // Limpa o formulário após o envio
                 } else {
                     alert('Erro ao enviar mensagem: ' + data.message);
                 }

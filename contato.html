@@ -79,25 +79,25 @@
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
     
-            // Envia os dados para o Formspree via fetch
             const form = document.getElementById("contactForm");
             const formData = new FormData(form);
     
+            // Envia os dados para o Formspree via fetch
             fetch(form.action, {
                 method: 'POST',
                 body: formData
             })
             .then(response => {
                 if (response.ok) {
-                    // Se o formulário foi enviado com sucesso, redireciona para a página de sucesso
-                    window.location.href = 'sucesso.html'; // Redirecionamento
+                    // Se o envio for bem-sucedido, redireciona para a página de sucesso
+                    window.location.href = 'sucesso.html';
                 } else {
-                    // Se houver um erro, mostre uma mensagem de erro
+                    // Caso haja erro
                     alert('Houve um problema ao enviar sua mensagem. Tente novamente!');
                 }
             })
             .catch(error => {
-                // Caso aconteça um erro durante o envio
+                // Se ocorrer algum erro com a requisição
                 console.error('Erro ao enviar o formulário:', error);
                 alert('Erro de conexão. Tente novamente mais tarde.');
             });

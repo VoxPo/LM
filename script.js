@@ -10,21 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            var targetId = this.getAttribute('href');
-            var targetElement = document.querySelector(targetId);
-            var headerOffset = 70;
-            var elementPosition = targetElement.getBoundingClientRect().top;
-            var offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-            window.scrollTo({
-                top: offsetPosition,
-                behavior: "smooth"
-            });
-        });
-    });
+    
     var carousel = document.querySelector('#mainCarousel');
     carousel.addEventListener('slid.bs.carousel', function () {
         var activeCaption = carousel.querySelector('.carousel-item.active .carousel-caption');

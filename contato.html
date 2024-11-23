@@ -34,7 +34,7 @@
             <h1 class="text-center mb-4 text-white">Entre em Contato t</h1>
             <div class="row justify-content-center">
                 <div class="col-md-6 bg-white text-dark p-4 rounded">
-                    <form action="https://formspree.io/f/xeoqzbpb" method="POST" onsubmit="window.location.href='sucesso.html'; return true;">
+                    <form id="contactForm" action="https://formspree.io/f/xeoqzbpb" method="POST">
                         <div class="mb-3">
                             <label for="name" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="name" name="name" required>
@@ -49,6 +49,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Enviar</button>
                     </form>
+                    
                 </div>
             </div>
         </div>
@@ -74,6 +75,33 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+    
+            // Envia os dados para o Formspree via fetch
+            const form = document.getElementById("contactForm");
+            const formData = new FormData(form);
+    
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Se o formulário foi enviado com sucesso, redireciona para a página de sucesso
+                    window.location.href = 'sucesso.html'; // Redirecionamento
+                } else {
+                    // Se houver um erro, mostre uma mensagem de erro
+                    alert('Houve um problema ao enviar sua mensagem. Tente novamente!');
+                }
+            })
+            .catch(error => {
+                // Caso aconteça um erro durante o envio
+                console.error('Erro ao enviar o formulário:', error);
+                alert('Erro de conexão. Tente novamente mais tarde.');
+            });
+        });
+    </script>
 </body>
 </html>

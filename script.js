@@ -33,3 +33,4 @@ document.addEventListener("DOMContentLoaded", function() {
         activeCaption.classList.add('animate__fadeIn');
     });
 });
+
